@@ -2,21 +2,55 @@
 require('dotenv').config();
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const databaseName = "mongodb_lab";
 const uri = process.env.MONGO_URI;
 
+const custumers = [
+  {
+    name: "Peter",
+    lastname: "Paker",
+    job: "Photographer"
+  },
+  {
+    name: "Tony",
+    lastname: "Stark",
+    job: "Genius, Billionaire, Playboy, Philanthropist"
+  },
+  {
+    name: "Bruce",
+    lastname: "Baner",
+    job: "Scientist"
+  },
+  {
+    name: "Thor",
+    lastname: "of Asgar",
+    job: "Price"
+  },
+  {
+    name: "Steve",
+    lastname: "Rogers",
+    job: "Captain"
+  }
+]
 async function main() {
-try {
+  let results;
+
+  try {
     // Create the client
     const client = new MongoClient(uri);
 
     // Create database
-    const db = client.db(databaseName);
+    const db = client.db("mongodb_lab");
     
     // Create a collection 
-    const collectionName = "product";
-    const collection = db.collection(collectionName);
-    
+    const custumersCollection = db.collection("custumers");
+
+    // Insert
+    // await custumersCollection.insertMany(custumers)
+
+    // Find
+    results = await custumersCollection.findOne({name: "Peter"});
+    console.log(results);
+
     client.close();
 
   } catch (error) {
