@@ -1,7 +1,7 @@
 # mongodb-lab
 
-- [] Creating a Database
-- [] Creating a Collection
+- [x] Creating a Database
+- [x] Creating a Collection
 - [] Node.js MongoDB Insert
 - [] Node.js MongoDB Find
 - [] Node.js MongoDB Query
