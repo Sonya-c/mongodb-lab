@@ -8,8 +8,13 @@ async function main() {
   try {
     // Create the client
     const client = new MongoClient(uri);
-   
-    console.log("Connected");
+
+    // Create database
+    const db = client.db("mongodb_lab");
+    
+    // Create a collection 
+    const superherosCollection = await db.createCollection("superheros");
+    console.log("Collection created");
 
     client.close();
 

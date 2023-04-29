@@ -9,7 +9,10 @@ async function main() {
     // Create the client
     const client = new MongoClient(uri);
    
-    console.log("Connected");
+    db = client.db("mongodb_lab");
+
+    let result = await db.collection("superheros").find({}).toArray();
+    console.log(result);
 
     client.close();
 

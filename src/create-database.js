@@ -1,16 +1,20 @@
 
 require('dotenv').config();
 
-const { MongoClient } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
 async function main() {
+  let results;
+
   try {
     // Create the client
     const client = new MongoClient(uri);
-   
-    console.log("Connected");
 
+    // Create database
+    const db = client.db("mongodb_lab");
+    console.log("Database created!");
+    
     client.close();
 
   } catch (error) {
